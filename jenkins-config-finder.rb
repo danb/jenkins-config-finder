@@ -52,13 +52,16 @@ list =  @client.job.list(".*")
 job = JenkinsApi::Client::Job.new(@client)
 list.each do |j|
     config =  job.get_config(j)
-    config_obj = Nokogiri::XML(config)
-    if config_obj.root.at_xpath(options[:path])
+    config_obj = Nokogiri::XML(config)    
+    if options[:node].nil? then
+      if config_obj.root.at_xpath(options[:path])
         puts "::::#{j}:::::"
-        if options[:node].nil? then
-          puts config_obj.root.at_xpath("#{options[:path]}").to_s 
-        else
-          puts config_obj.root.at_xpath("#{options[:path]}//#{options[:node]}").to_s 
-        end
+        puts config_obj.root.at_xpath("#{options[:path]}").to_s 
+      end
+    else
+      if config_obj.root.at_xpath("#{options[:path]}//#{options[:node]}")
+        puts "::::#{j}:::::"
+        puts config_obj.root.at_xpath("#{options[:path]}//#{options[:node]}").to_s 
+      end
     end
 end
