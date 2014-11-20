@@ -56,12 +56,12 @@ list.each do |j|
     if options[:node].nil? then
       if config_obj.root.at_xpath(options[:path])
         puts "::::#{j}:::::"
-        puts config_obj.root.at_xpath("#{options[:path]}").to_s 
+        puts config_obj.root.at_xpath("#{options[:path]}").content.to_s 
       end
     else
       if config_obj.root.at_xpath("#{options[:path]}//#{options[:node]}")
         puts "::::#{j}:::::"
-        puts config_obj.root.at_xpath("#{options[:path]}//#{options[:node]}").to_s 
+        puts config_obj.root.at_xpath("#{options[:path]}//#{options[:node]}").content.to_s 
       end
     end
     if config_obj.root.at_xpath("//project//properties//hudson.plugins.promoted__builds.JobPropertyImpl")
@@ -79,12 +79,12 @@ list.each do |j|
             if options[:node].nil? then
               if promotion_obj.root.at_xpath(options[:path])
                 puts "::::#{j}/#{promotion_name}:::::"
-                puts promotion_obj.root.at_xpath("#{options[:path]}").to_s 
+                puts promotion_obj.root.at_xpath("#{options[:path]}").content.to_s 
               end
             else
               if promotion_obj.root.at_xpath("#{options[:path]}//#{options[:node]}")
                 puts "::::#{j}/#{promotion_name}:::::"
-                puts promotion_obj.root.at_xpath("#{options[:path]}//#{options[:node]}").to_s 
+                puts promotion_obj.root.at_xpath("#{options[:path]}//#{options[:node]}").content.to_s 
               end
             end
           end
