@@ -64,4 +64,29 @@ list.each do |j|
         puts config_obj.root.at_xpath("#{options[:path]}//#{options[:node]}").to_s 
       end
     end
+    if config_obj.root.at_xpath("//project//properties//hudson.plugins.promoted__builds.JobPropertyImpl")
+          
+          promotion_name = config_obj.root.at_xpath("//project//properties//hudson.plugins.promoted__builds.JobPropertyImpl//activeProcessNames//string").content
+          
+          begin
+          promotion_config = job.get_config("#{j}/promotion/process/#{promotion_name}/config.xml")
+          rescue JenkinsApi::Exceptions::NotFound
+            promotion_config = nil
+          end
+
+          unless promotion_config.nil?
+            promotion_obj = Nokogiri::XML(promotion_config) 
+            if options[:node].nil? then
+              if promotion_obj.root.at_xpath(options[:path])
+                puts "::::#{j}/#{promotion_name}:::::"
+                puts promotion_obj.root.at_xpath("#{options[:path]}").to_s 
+              end
+            else
+              if promotion_obj.root.at_xpath("#{options[:path]}//#{options[:node]}")
+                puts "::::#{j}/#{promotion_name}:::::"
+                puts promotion_obj.root.at_xpath("#{options[:path]}//#{options[:node]}").to_s 
+              end
+            end
+          end
+    end
 end
