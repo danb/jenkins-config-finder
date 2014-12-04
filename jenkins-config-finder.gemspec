@@ -4,7 +4,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 
 Gem::Specification.new do |spec|
   spec.name          = "jenkins-config-finder"
-  spec.version       = "0.1"
+  spec.version       = "0.2"
   spec.authors       = ["Bradley, Dan"]
   spec.email         = ["danb468@gmail.com"]
   spec.summary       = %q{Search configurations for all jenkins jobs}
