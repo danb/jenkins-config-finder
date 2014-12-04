@@ -15,7 +15,7 @@ $ gem install jenkins-config-finder
 ### Command Line
    
 You can search a jenkins server from the command line.  
-**Example: list all the job descriptions
+Example: list all the job descriptions
 ```
 $ jenkins-config-finder.rb 
 Missing options: url, user, password, path
@@ -36,7 +36,7 @@ YourProject aims to simplify your life
 
 You can integrate the searches into ruby code by searching with an XPath path.
 
-**Example: list all the jobs git urls
+Example: list all the jobs git urls
 ```
 require 'jenkins_config_finder'
 
