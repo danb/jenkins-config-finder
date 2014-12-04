@@ -7,6 +7,7 @@ gemspec
 
 group :development, :test do
   gem "simplecov"
+  gem "rake"
   gem "yard"
   gem "rspec"
   gem "webmock"
