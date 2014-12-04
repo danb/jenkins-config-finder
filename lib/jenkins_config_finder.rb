@@ -2,8 +2,6 @@
 require 'jenkins_api_client'
 require 'nokogiri'
 
-
-
 module JenkinsConfigFinder
 
   # Establishes a connection to the jenkins server
@@ -32,7 +30,7 @@ module JenkinsConfigFinder
   #   # Find and return all projects descriptions
   #   JenkinsConfigFinder.find('project//description')
   #   # Find and return all git repositories urls
-  #   JenkinsConfigFinder.find('@class:hudson.plugins.git.GitSCM', //hudson.plugins.git.UserRemoteConfig//url)
+  #   JenkinsConfigFinder.find('//scm[@class="hudson.plugins.git.GitSCM"]', url)
   #
   # ==== Returns
   #
