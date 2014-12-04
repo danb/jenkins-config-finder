@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["danb468@gmail.com"]
   spec.summary       = %q{Search configurations for all jenkins jobs}
   spec.description   = %q{Find configuration items across all jenkins jobs}
-  spec.homepage      = ""
+  spec.homepage      = "https://github.com/danb/jenkins-config-finder"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0")
